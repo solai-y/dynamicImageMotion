@@ -34,6 +34,7 @@ window.onmousemove = e => {
         
 
     // adjust style of the track based on the percentage moved
+    // we use the animate feature to have a duration delay in the movement animation for both the track and the image
     track.animate({
         transform : `translate(${nextPercentage}%, -50%)`
     }, { duration: 1200, fill: "forwards"});
