@@ -34,5 +34,14 @@ window.onmousemove = e => {
         
 
     // adjust style of the track based on the percentage moved
-    track.style.transform = `translate(${nextPercentage}%, -50%)`;
+    track.animate({
+        transform : `translate(${nextPercentage}%, -50%)`
+    }, { duration: 1200, fill: "forwards"});
+
+    // what we are doing here is to adjust the css of the image to be offset by the amount of movement there is in the mousemove
+    for (const image of track.getElementsByClassName("image")) {
+        image.animate({
+            objectPosition : `${nextPercentage + 100}% 50%`
+        }, { duration: 1200, fill: "forwards"});
+    }
 }

@@ -12,7 +12,7 @@ body {
     height: 56vmin;
     object-fit: cover;
     /* to maintain aspect ratio despite changing the size of the image */
-    object-position: center;
+    object-position: 100% 50%;
     /* to keep the image centralised */
 }
 
