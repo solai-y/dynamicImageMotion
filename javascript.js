@@ -22,11 +22,15 @@ window.onmousemove = e => {
 
     // calculate percentage of movement of the mouse
     const percentage = (mouseDelta / maxDelta) * -100, 
-        nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
+        nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+        nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
         // the code find the new percentage to add and adds it to the prev-percentage dataset that is put into the html this way the data of amount moved is stored and can be used to calculate how much further to move the track when the mouse is down again
 
-        // we add the percentage to this dataset to help transfer the data from this function to the onmouseup event handler which will sotre the value on the html side for referral
+        // one issue at this point is that the track can be moved indefinitely in either direction to fix this we will use max and min functions to prevent the number from going under or above a certain threshold that is why we use the min and max functions
+
+        // we add the percentage to this dataset to help transfer the data from this function to the onmouseup event handler which will store the value on the html side for referral
         track.dataset.percentage = nextPercentage;
+        
         
 
     // adjust style of the track based on the percentage moved
